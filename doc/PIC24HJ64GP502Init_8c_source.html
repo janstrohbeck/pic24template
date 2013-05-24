@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.4"/>
-<title>PIC24H Project Template: PIC24HJ64GP502 Init Functions</title>
+<title>PIC24H Project Template: src/PIC24HJ64GP502Init.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,7 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -58,7 +58,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,63 +78,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#files">Files</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">PIC24HJ64GP502 Init Functions</div>  </div>
+<div class="title">PIC24HJ64GP502Init.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This module includes Functions to set up the PIC24H Microcontroller.  
-<a href="#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:PIC24HJ64GPInit_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PIC24HJ64GPInit_8h.html">PIC24HJ64GPInit.h</a></td></tr>
-<tr class="memdesc:PIC24HJ64GPInit_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIC Init functions. <br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:PIC24HJ64GP502Init_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PIC24HJ64GP502Init_8c.html">PIC24HJ64GP502Init.c</a></td></tr>
-<tr class="memdesc:PIC24HJ64GP502Init_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements init functions. <br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:gaafa302465b0c807f1a922f02b6d4cff0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__init.html#gaafa302465b0c807f1a922f02b6d4cff0">init</a> (<a class="el" href="group__types.html#ga0ecf26b576b9a54eca656b9be7ba6a06">bool</a> PLL)</td></tr>
-<tr class="memdesc:gaafa302465b0c807f1a922f02b6d4cff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function for the PIC24HJ64GP502.  <a href="#gaafa302465b0c807f1a922f02b6d4cff0">More...</a><br/></td></tr>
-<tr class="separator:gaafa302465b0c807f1a922f02b6d4cff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>This module includes Functions to set up the PIC24H Microcontroller. </p>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gaafa302465b0c807f1a922f02b6d4cff0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__types.html#ga0ecf26b576b9a54eca656b9be7ba6a06">bool</a>&#160;</td>
-          <td class="paramname"><em>PLL</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Init function for the PIC24HJ64GP502. </p>
-<p>Initializes the PIC to fit our needs.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">PLL</td><td>Activate PLL (increase CPU Frequency) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="PIC24HJ64GP502Init_8c_source.html#l00039">39</a> of file <a class="el" href="PIC24HJ64GP502Init_8c_source.html">PIC24HJ64GP502Init.c</a>.</p>
-
-<p>Referenced by <a class="el" href="main_8c_source.html#l00038">main()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<a href="PIC24HJ64GP502Init_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/* Copyright (C) </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * 2013 - Jan Strohbeck</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * This program is free software; you can redistribute it and/or</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * modify it under the terms of the GNU General Public License</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * as published by the Free Software Foundation; either version 2</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * of the License, or (at your option) any later version.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * along with this program; if not, write to the Free Software</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="PIC24HJ64GPInit_8h.html" title="PIC Init functions. ">PIC24HJ64GPInit.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html" title="Defines all the types we are going to need in the project. ">types.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifdef __PIC24HJ64GP502__</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span>    _FOSCSEL(FNOSC_FRC);    <span class="comment">// FRC Oscillator with PLL</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _FOSC( FCKSM_CSECMD &amp;   <span class="comment">// Clock Switching is enabled and Fail Safe Clock Monitor is disabled</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            OSCIOFNC_OFF &amp;   <span class="comment">// OSC2 Pin Function: OSC2 is Clock Output</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            POSCMD_NONE);    <span class="comment">// Primary Oscillator Mode: Disabled</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    _FWDT(FWDTEN_OFF);      <span class="comment">// turn off watchdog</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="group__init.html#gaafa302465b0c807f1a922f02b6d4cff0">   39</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__init.html#gaafa302465b0c807f1a922f02b6d4cff0" title="Init function for the PIC24HJ64GP502. ">init</a> (<span class="keywordtype">bool</span> PLL)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (PLL)</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// Configure Oscillator to operate the device at 40Mhz</span></div>
@@ -149,10 +138,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">while</span> (OSCCONbits.LOCK != 1);       <span class="comment">// Wait for PLL to lock</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Fri May 24 2013 13:35:29 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">

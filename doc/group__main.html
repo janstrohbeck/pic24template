@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.4"/>
-<title>PIC24 Microcontroller: Main Program</title>
+<title>PIC24H Project Template: Main Program</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">PIC24 Microcontroller
+   <div id="projectname">PIC24H Project Template
    </div>
   </td>
  </tr>
@@ -117,6 +117,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="main_8c_source.html#l00035">35</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8c_source.html#l00038">main()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="gaf9a763730e556ad00b43af2f27583cfd"></a>
@@ -128,6 +132,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00036">36</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8c_source.html#l00038">main()</a>.</p>
 
 </div>
 </div>
@@ -146,12 +154,32 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="main_8c_source.html#l00038">38</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p>References <a class="el" href="utils_8c_source.html#l00031">delayMs()</a>, <a class="el" href="utils_8h_source.html#l00042">ENABLED</a>, <a class="el" href="PIC24HJ64GP502Init_8c_source.html#l00039">init()</a>, <a class="el" href="utils_8c_source.html#l00038">LED()</a>, <a class="el" href="main_8c_source.html#l00035">LEDLAT</a>, <a class="el" href="main_8c_source.html#l00036">LEDTRIS</a>, <a class="el" href="utils_8h_source.html#l00039">OFF</a>, <a class="el" href="utils_8h_source.html#l00043">TOGGLE</a>, and <a class="el" href="types_8h_source.html#l00038">TRUE</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="group__init.html#gaafa302465b0c807f1a922f02b6d4cff0" title="Init function for the PIC24HJ64GP502. ">init</a> (<a class="code" href="group__types.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Configure LED1</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> (&amp;<a class="code" href="group__main.html#gaf9a763730e556ad00b43af2f27583cfd">LEDTRIS</a>, &amp;<a class="code" href="group__main.html#ga7bb043b2250ed90a298f3da9ea1f3355">LEDLAT</a>, 15, <a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> (&amp;<a class="code" href="group__main.html#gaf9a763730e556ad00b43af2f27583cfd">LEDTRIS</a>, &amp;<a class="code" href="group__main.html#ga7bb043b2250ed90a298f3da9ea1f3355">LEDLAT</a>, 15, <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    uint8_t u8count;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">while</span> (1)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// Toggle LED1 every second</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> (&amp;<a class="code" href="group__main.html#gaf9a763730e556ad00b43af2f27583cfd">LEDTRIS</a>, &amp;<a class="code" href="group__main.html#ga7bb043b2250ed90a298f3da9ea1f3355">LEDLAT</a>, 15, <a class="code" href="group__utils.html#ga9507a94acc0da8956a17fec9532d45ba">TOGGLE</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1000);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 23 2013 12:36:53 for PIC24 Microcontroller by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 24 2013 13:35:29 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

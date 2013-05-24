@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.4"/>
-<title>PIC24H Project Template: LCD Helper Functions</title>
+<title>PIC24H Project Template: src/lcd.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,7 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -58,7 +58,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,198 +78,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#files">Files</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LCD Helper Functions</div>  </div>
+<div class="title">lcd.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This module contains functions to handle output and sending data to the LCD display.  
-<a href="#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:lcd_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lcd_8h.html">lcd.h</a></td></tr>
-<tr class="memdesc:lcd_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD helper functions. <br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:lcd_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lcd_8c.html">lcd.c</a></td></tr>
-<tr class="memdesc:lcd_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements LCD functions. <br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga6c7a7f3b83303db96d6f81eb3b1e6e41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#ga6c7a7f3b83303db96d6f81eb3b1e6e41">LCD_STAT</a>&#160;&#160;&#160;SPI1STAT</td></tr>
-<tr class="separator:ga6c7a7f3b83303db96d6f81eb3b1e6e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4464075bb597c7e4fe46048086dd2ec4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#ga4464075bb597c7e4fe46048086dd2ec4">LCD_CON1</a>&#160;&#160;&#160;SPI1CON1</td></tr>
-<tr class="separator:ga4464075bb597c7e4fe46048086dd2ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaec82b98d0b4c388d305955025f31211a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>&#160;&#160;&#160;SPI1STATbits</td></tr>
-<tr class="separator:gaec82b98d0b4c388d305955025f31211a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad2e229caee7351c4088f8a9ad30694e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>&#160;&#160;&#160;SPI1CON1bits</td></tr>
-<tr class="separator:gad2e229caee7351c4088f8a9ad30694e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga743e3d44210124021fa964f2aa0c5fb9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>&#160;&#160;&#160;SPI1BUF</td></tr>
-<tr class="separator:ga743e3d44210124021fa964f2aa0c5fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga944decfc39f9e5bd2ecdfb53de574a3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a>&#160;&#160;&#160;LATAbits.LATA4</td></tr>
-<tr class="separator:ga944decfc39f9e5bd2ecdfb53de574a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf8903d8eea3868940c60af887473b152"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a>&#160;&#160;&#160;LATAbits.LATA3</td></tr>
-<tr class="separator:gaf8903d8eea3868940c60af887473b152"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:gaf17e7d5552c2ccb5aa5ba25959db249b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b">lcd_display_char</a> (<a class="el" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> c8character)</td></tr>
-<tr class="memdesc:gaf17e7d5552c2ccb5aa5ba25959db249b"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI Function to display Characters on the display.  <a href="#gaf17e7d5552c2ccb5aa5ba25959db249b">More...</a><br/></td></tr>
-<tr class="separator:gaf17e7d5552c2ccb5aa5ba25959db249b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c0e690548d4adf74e9a1562769ff1d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1">lcd_cmd</a> (uint8_t u8cmd)</td></tr>
-<tr class="memdesc:ga7c0e690548d4adf74e9a1562769ff1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI Function to send a command to the lcd display.  <a href="#ga7c0e690548d4adf74e9a1562769ff1d1">More...</a><br/></td></tr>
-<tr class="separator:ga7c0e690548d4adf74e9a1562769ff1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6842775ba83d166f02b8fef8bb63b1e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6">lcd_init</a> (void)</td></tr>
-<tr class="memdesc:ga6842775ba83d166f02b8fef8bb63b1e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the display.  <a href="#ga6842775ba83d166f02b8fef8bb63b1e6">More...</a><br/></td></tr>
-<tr class="separator:ga6842775ba83d166f02b8fef8bb63b1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>This module contains functions to handle output and sending data to the LCD display. </p>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga944decfc39f9e5bd2ecdfb53de574a3f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CSB&#160;&#160;&#160;LATAbits.LATA4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00042">42</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-<p>Referenced by <a class="el" href="lcd_8c_source.html#l00033">lcd_cmd()</a>, <a class="el" href="lcd_8c_source.html#l00045">lcd_display_char()</a>, and <a class="el" href="lcd_8c_source.html#l00065">lcd_init()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga743e3d44210124021fa964f2aa0c5fb9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_BUF&#160;&#160;&#160;SPI1BUF</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00041">41</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-<p>Referenced by <a class="el" href="lcd_8c_source.html#l00033">lcd_cmd()</a>, and <a class="el" href="lcd_8c_source.html#l00045">lcd_display_char()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga4464075bb597c7e4fe46048086dd2ec4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_CON1&#160;&#160;&#160;SPI1CON1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00038">38</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gad2e229caee7351c4088f8a9ad30694e8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_CON1bits&#160;&#160;&#160;SPI1CON1bits</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00040">40</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-<p>Referenced by <a class="el" href="lcd_8c_source.html#l00065">lcd_init()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga6c7a7f3b83303db96d6f81eb3b1e6e41"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_STAT&#160;&#160;&#160;SPI1STAT</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00037">37</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gaec82b98d0b4c388d305955025f31211a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_STATbits&#160;&#160;&#160;SPI1STATbits</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00039">39</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-<p>Referenced by <a class="el" href="lcd_8c_source.html#l00033">lcd_cmd()</a>, <a class="el" href="lcd_8c_source.html#l00045">lcd_display_char()</a>, and <a class="el" href="lcd_8c_source.html#l00065">lcd_init()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gaf8903d8eea3868940c60af887473b152"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS&#160;&#160;&#160;LATAbits.LATA3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="lcd_8h_source.html#l00043">43</a> of file <a class="el" href="lcd_8h_source.html">lcd.h</a>.</p>
-
-<p>Referenced by <a class="el" href="lcd_8c_source.html#l00033">lcd_cmd()</a>, and <a class="el" href="lcd_8c_source.html#l00045">lcd_display_char()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga7c0e690548d4adf74e9a1562769ff1d1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lcd_cmd </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>u8cmd</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>SPI Function to send a command to the lcd display. </p>
-<p>Sends a HEX command to the Display over SPI</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">u8cmd</td><td>The Command to be sent (HEX) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="lcd_8c_source.html#l00033">33</a> of file <a class="el" href="lcd_8c_source.html">lcd.c</a>.</p>
-
-<p>References <a class="el" href="lcd_8h_source.html#l00042">CSB</a>, <a class="el" href="utils_8c_source.html#l00031">delayMs()</a>, <a class="el" href="lcd_8h_source.html#l00041">LCD_BUF</a>, <a class="el" href="lcd_8h_source.html#l00039">LCD_STATbits</a>, and <a class="el" href="lcd_8h_source.html#l00043">RS</a>.</p>
-
-<p>Referenced by <a class="el" href="lcd_8c_source.html#l00065">lcd_init()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<a href="lcd_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/* Copyright (C) </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * 2013 - Jan Strohbeck</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * This program is free software; you can redistribute it and/or</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * modify it under the terms of the GNU General Public License</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * as published by the Free Software Foundation; either version 2</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * of the License, or (at your option) any later version.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * along with this program; if not, write to the Free Software</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;p24HJ64GP502.h&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html" title="Defines all the types we are going to need in the project. ">types.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lcd_8h.html" title="LCD helper functions. ">lcd.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html" title="PIC Utility functions. ">utils.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (uint8_t u8cmd)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 0;             <span class="comment">// Beginning of data transfer</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 0;              <span class="comment">// Command mode</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a> &amp;= 0xFF00;   <span class="comment">// prepare RD0 - RD7</span></div>
@@ -274,36 +122,9 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1;             <span class="comment">// End of data transfer</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (100);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="gaf17e7d5552c2ccb5aa5ba25959db249b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lcd_display_char </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a>&#160;</td>
-          <td class="paramname"><em>c8character</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>SPI Function to display Characters on the display. </p>
-<p>Generally it sends data to the LCD Display But most times this will be a character</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">c8character</td><td>The Character to be displayed </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="lcd_8c_source.html#l00045">45</a> of file <a class="el" href="lcd_8c_source.html">lcd.c</a>.</p>
-
-<p>References <a class="el" href="lcd_8h_source.html#l00042">CSB</a>, <a class="el" href="utils_8c_source.html#l00031">delayMs()</a>, <a class="el" href="lcd_8h_source.html#l00041">LCD_BUF</a>, <a class="el" href="lcd_8h_source.html#l00039">LCD_STATbits</a>, and <a class="el" href="lcd_8h_source.html#l00043">RS</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display Characters on the display. ">lcd_display_char</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> c8character)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 0;              <span class="comment">// Beginning of data transfer</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 1;               <span class="comment">// Data mode</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a> &amp;= 0xFF00;    <span class="comment">// prepare RD0 - RD7</span></div>
@@ -321,30 +142,9 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1;              <span class="comment">// End of data transfer</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (100);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="ga6842775ba83d166f02b8fef8bb63b1e6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lcd_init </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname">)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function to initialize the display. </p>
-<p>Configures the Ports and SPI and sends the Initialization commands to the display. </p>
-
-<p>Definition at line <a class="el" href="lcd_8c_source.html#l00065">65</a> of file <a class="el" href="lcd_8c_source.html">lcd.c</a>.</p>
-
-<p>References <a class="el" href="lcd_8h_source.html#l00042">CSB</a>, <a class="el" href="lcd_8c_source.html#l00033">lcd_cmd()</a>, <a class="el" href="lcd_8h_source.html#l00040">LCD_CON1bits</a>, and <a class="el" href="lcd_8h_source.html#l00039">LCD_STATbits</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    RPOR2 = 0x708; <span class="comment">// Use RP4 as SCK1 and RP5 as SDO1</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    TRISB &amp;= ~(1&lt;&lt;4); <span class="comment">// SCK -&gt; Output</span></div>
@@ -382,10 +182,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x01);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x06);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Fri May 24 2013 13:35:29 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">

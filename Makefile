@@ -11,7 +11,7 @@ CC = /opt/microchip/xc16/v1.11/bin/xc16-gcc
 BIN2HEX = /opt/microchip/xc16/v1.11/bin/xc16-bin2hex 
 RM = rm -f
 MKDIR = mkdir -p
-RMDIR = rm -r
+RMDIR = rm -rf
 MV = mv -f
 
 # Input-/Header-/Output-Directories
