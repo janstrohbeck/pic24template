@@ -46,6 +46,12 @@ void lcd_cmd (uint8_t u8cmd)
 
 void lcd_display_char (c8_t c8character)
 {
+    if (c8character == '\n')
+    {
+        lcd_set_cursor (1,0);
+        return;
+    }
+
     RS = 1;               // Beginning of Data mode
     CSB = 0;              // Select display
 
@@ -119,6 +125,12 @@ void lcd_clear (void)
     lcd_cmd (0x39); // Function Set
     delayMs (5);
     lcd_cmd (0x06); // Cursor auto-increment
+    delayMs (5);
+}
+
+void lcd_set_cursor (uint8_t u8line, uint8_t u8col)
+{
+    lcd_cmd (0x80 | (u8line << 6) | u8col);
     delayMs (5);
 }
 

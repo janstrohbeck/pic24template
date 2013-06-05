@@ -47,6 +47,10 @@ int main (void)
     // Turn on display, but disable cursor and position marker
     lcd_conf_display (ON, OFF, OFF);
 
+    lcd_display_string ("Hello World!\n");
+    lcd_display_string ("(C) JanStrohbeck");
+    delayMs (3000);
+
     uint8_t u8test = 0;
     while (1)
     {

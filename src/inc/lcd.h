@@ -103,6 +103,14 @@ void lcd_clear (void);
 void lcd_conf_display (bool b8display, bool b8cursor, bool b8position);
 
 /**
+ * Sets the display cursor at a specific position.
+ *
+ * @param u8line The line to set the cursor to
+ * @param u8col The column to set the cursor to
+ */
+void lcd_set_cursor (uint8_t u8line, uint8_t u8col);
+
+/**
  * Initializes SPI1 to work properly.
  * 
  * Configures the Registers relevant to SPI so that it works correctly.
