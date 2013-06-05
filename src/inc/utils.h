@@ -63,11 +63,14 @@ void delayMs (uint16_t u16delay);
  */ 
 void LED ( volatile uint16_t *u16ledtris, volatile uint16_t *u16ledlat, uint8_t u8led, uint8_t u8action );
 
+<<<<<<< HEAD
 void LED1 (uint8_t action);
 
 void delay_ms (uint16_t u16delay);
 void delay_10us (uint16_t u16delay);
 
+=======
+>>>>>>> ee22a8ccb96d8390f8f63d40a435a91ec46a39f5
 /**
  * Wrapper fuction for getting the state of a button.
  *
