@@ -87,11 +87,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:PIC24HJ64GPInit_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PIC24HJ64GPInit_8h.html">PIC24HJ64GPInit.h</a></td></tr>
-<tr class="memdesc:PIC24HJ64GPInit_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIC Init functions. <br/></td></tr>
+<tr class="memitem:PIC24HJ64GP502init_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PIC24HJ64GP502init_8h.html">PIC24HJ64GP502init.h</a></td></tr>
+<tr class="memdesc:PIC24HJ64GP502init_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIC Init functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:PIC24HJ64GP502Init_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PIC24HJ64GP502Init_8c.html">PIC24HJ64GP502Init.c</a></td></tr>
-<tr class="memdesc:PIC24HJ64GP502Init_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements init functions. <br/></td></tr>
+<tr class="memitem:PIC24HJ64GP502init_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PIC24HJ64GP502init_8c.html">PIC24HJ64GP502init.c</a></td></tr>
+<tr class="memdesc:PIC24HJ64GP502init_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements init functions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -126,9 +126,9 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="PIC24HJ64GP502Init_8c_source.html#l00039">39</a> of file <a class="el" href="PIC24HJ64GP502Init_8c_source.html">PIC24HJ64GP502Init.c</a>.</p>
+<p>Definition at line <a class="el" href="PIC24HJ64GP502init_8c_source.html#l00039">39</a> of file <a class="el" href="PIC24HJ64GP502init_8c_source.html">PIC24HJ64GP502init.c</a>.</p>
 
-<p>Referenced by <a class="el" href="main_8c_source.html#l00038">main()</a>.</p>
+<p>Referenced by <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (PLL)</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
@@ -148,14 +148,28 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">while</span> (OSCCONbits.COSC != 0b001);   <span class="comment">// Wait for Clock switch to occur</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">while</span> (OSCCONbits.LOCK != 1);       <span class="comment">// Wait for PLL to lock</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    AD1CON1bits.ADON = 0; <span class="comment">// Turn off ADC</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    CMCONbits.C1EN = 0; <span class="comment">// Turn off Comparator1</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    CMCONbits.C2EN = 0; <span class="comment">// Turn off Comparator2</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    PMD1 = 0xFFFF; <span class="comment">// Turn off everything</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    PMD2 = 0xFFFF;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    PMD3 = 0xFFFF;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    PMD1bits.SPI1MD = 0; <span class="comment">// Enable SPI1</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    AD1PCFGL = 0xFFFF; <span class="comment">// Set All Pins as Digital IOs</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    TRISB = 0; <span class="comment">// Set all Pins as Outputs</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    TRISA = 0;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    LATA = 0; <span class="comment">// Set all Pins default value to zero.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    LATB = 0;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 24 2013 13:35:29 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

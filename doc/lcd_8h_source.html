@@ -117,26 +117,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="group__LCD.html#ga4464075bb597c7e4fe46048086dd2ec4">   38</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_CON1 SPI1CON1</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">   39</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_STATbits SPI1STATbits</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">   40</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_CON1bits SPI1CON1bits</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">   41</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_BUF SPI1BUF</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">   42</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define CSB LATAbits.LATA4</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="group__LCD.html#ga13e2fa182018fcb1190e04f55921a77f">   41</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_CON2bits SPI1CON2bits</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">   42</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_BUF SPI1BUF</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">   43</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define RS LATAbits.LATA3</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display Characters on the display. ">lcd_display_char</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> c8character);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (uint8_t u8cmd);            </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* LCD_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">   44</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define CSB LATAbits.LATA4</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="group__LCD.html#ga88f7782e210e61586baf33b93240d905">   45</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SS LATBbits.LATB7</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> c8character);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pac8string);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (uint8_t u8cmd);            </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a" title="Clears the LCD display. ">lcd_clear</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d" title="Configures the LCD display. ">lcd_conf_display</a> (<span class="keywordtype">bool</span> b8display, <span class="keywordtype">bool</span> b8cursor, <span class="keywordtype">bool</span> b8position);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa" title="Initializes SPI1 to work properly. ">spi_init</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* LCD_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 24 2013 13:35:29 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

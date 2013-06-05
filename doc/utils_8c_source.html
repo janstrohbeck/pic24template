@@ -106,49 +106,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * </span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html" title="Defines all the types we are going to need in the project. ">types.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html" title="PIC Utility functions. ">utils.h</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (uint16_t u16delay)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    uint16_t u16i;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (; u16delay &gt; 0; u16delay--)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">for</span> (u16i = 0; u16i &lt;= 5500; u16i++);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> ( <span class="keyword">volatile</span> uint16_t *u16ledtris, <span class="keyword">volatile</span> uint16_t *u16ledlat, uint8_t u8led, uint8_t u8action )</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">switch</span> ( u8action )</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gad76d1750a6cdeebd506bfcd6752554d2">ON</a>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            *u16ledlat |= (1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            *u16ledlat &amp;= ~(1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga9507a94acc0da8956a17fec9532d45ba">TOGGLE</a>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            *u16ledlat ^= (1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            *u16ledtris &amp;= ~(1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gabd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            *u16ledtris |= (1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="group__utils.html#ga573291296e72372f66f5bbd1781b3ac9">   61</a></span>&#160;uint8_t <a class="code" href="group__utils.html#ga573291296e72372f66f5bbd1781b3ac9" title="Wrapper fuction for getting the state of a button. ">button_is_pressed</a> ( <span class="keyword">volatile</span> uint16_t *u16register, uint8_t u8port )</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Wait for the Button to reach its final state</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> ! (*u16register &amp; (1&lt;&lt;u8port)); </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;p24Hxxxx.h&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html" title="Defines all the types we are going to need in the project. ">types.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html" title="PIC Utility functions. ">utils.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="group__utils.html#ga0f9e956574df5cc9beb7c62922dbc698">   32</a></span>&#160;<span class="preprocessor">#define LED1LAT LATB</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="group__utils.html#gaf6cca7fb4132cea0c778a89416af5c5a">   33</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LED1TRIS TRISB</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (uint16_t u16delay)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    uint16_t u16i;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span> (; u16delay &gt; 0; u16delay--)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">for</span> (u16i = 0; u16i &lt;= 5500; u16i++);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="group__utils.html#ga5505c3f65c8abd7e2713ded1a1f760b3">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga5505c3f65c8abd7e2713ded1a1f760b3">delay_ms</a> (uint16_t u16delay)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (u16delay);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="group__utils.html#ga545bac53a00b33fd536bba77dfca477c">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga545bac53a00b33fd536bba77dfca477c">delay_10us</a> (uint16_t u16delay)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> ( <span class="keyword">volatile</span> uint16_t *u16ledtris, <span class="keyword">volatile</span> uint16_t *u16ledlat, uint8_t u8led, uint8_t u8action )</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">switch</span> ( u8action )</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gad76d1750a6cdeebd506bfcd6752554d2">ON</a>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// Create a &quot;1&quot; in LAT -&gt; Logically on</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            *u16ledlat |= (1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">// Create a &quot;0&quot; in LAT -&gt; Logically off</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            *u16ledlat &amp;= ~(1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga9507a94acc0da8956a17fec9532d45ba">TOGGLE</a>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="comment">// Toggle Bit in LAT -&gt; Switch State</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            *u16ledlat ^= (1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="comment">// Create a &quot;0&quot; in TRIS -&gt; Pin is Output -&gt; LED functionallity</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            *u16ledtris &amp;= ~(1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gabd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">// Create a &quot;1&quot; in TRIS -&gt; Pin is Input -&gt; No LED functionallity</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            *u16ledtris |= (1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">LED1</a> (uint8_t action)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> (&amp;<a class="code" href="group__utils.html#gaf6cca7fb4132cea0c778a89416af5c5a">LED1TRIS</a>, &amp;<a class="code" href="group__utils.html#ga0f9e956574df5cc9beb7c62922dbc698">LED1LAT</a>, 15, action);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="group__utils.html#ga573291296e72372f66f5bbd1781b3ac9">   85</a></span>&#160;uint8_t <a class="code" href="group__utils.html#ga573291296e72372f66f5bbd1781b3ac9" title="Wrapper fuction for getting the state of a button. ">button_is_pressed</a> ( <span class="keyword">volatile</span> uint16_t *u16register, uint8_t u8port )</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Wait for the Button to reach its final state</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Negate the PORT value (-&gt; Pull-Up) and return it</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> ! (*u16register &amp; (1&lt;&lt;u8port)); </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 24 2013 13:35:29 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
