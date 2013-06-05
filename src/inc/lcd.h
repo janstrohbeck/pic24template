@@ -38,7 +38,6 @@ extern "C" {
 #define LCD_CON1 SPI1CON1
 #define LCD_STATbits SPI1STATbits
 #define LCD_CON1bits SPI1CON1bits
-<<<<<<< HEAD
 #define LCD_CON2bits SPI1CON2bits
 #define LCD_BUF SPI1BUF
 #define RS LATAbits.LATA3
@@ -50,24 +49,12 @@ extern "C" {
  * 
  * Generally it sends data to the LCD Display. <br />
  * But most times this will be a character.
-=======
-#define LCD_BUF SPI1BUF
-#define CSB LATAbits.LATA4
-#define RS LATAbits.LATA3
-
-/**
- * SPI Function to display Characters on the display.
- * 
- * Generally it sends data to the LCD Display
- * But most times this will be a character
->>>>>>> ee22a8ccb96d8390f8f63d40a435a91ec46a39f5
  * 
  * @param c8character The Character to be displayed
  */
 void lcd_display_char (c8_t c8character);
 
 /**
-<<<<<<< HEAD
  * Displays a string on the display.
  * 
  * Takes an array of characters and simply sends them all
@@ -78,8 +65,6 @@ void lcd_display_char (c8_t c8character);
 void lcd_display_string (c8_t *pac8string);
 
 /**
-=======
->>>>>>> ee22a8ccb96d8390f8f63d40a435a91ec46a39f5
  * SPI Function to send a command to the lcd display.
  * 
  * Sends a HEX command to the Display over SPI
@@ -96,7 +81,6 @@ void lcd_cmd (uint8_t u8cmd);
  */
 void lcd_init (void);
 
-<<<<<<< HEAD
 /**
  * Clears the LCD display.
  * 
@@ -125,8 +109,6 @@ void lcd_conf_display (bool b8display, bool b8cursor, bool b8position);
  */
 void spi_init (void);
 
-=======
->>>>>>> ee22a8ccb96d8390f8f63d40a435a91ec46a39f5
 #ifdef __cplusplus
 }
 #endif

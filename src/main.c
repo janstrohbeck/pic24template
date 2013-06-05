@@ -28,7 +28,6 @@
  */
 #include <p24HJ64GP502.h>
 #include "types.h"
-<<<<<<< HEAD
 #include "PIC24HJ64GP502init.h"
 #include "utils.h"
 #include "lcd.h"
@@ -77,28 +76,6 @@ int main (void)
 
         // Toggle LED1 every second
         LED1 (TOGGLE);
-=======
-#include "PIC24HJ64GPInit.h"
-#include "utils.h"
-#include "lcd.h"
-
-#define LEDLAT LATB
-#define LEDTRIS TRISB
-
-int main (void)
-{
-    init (TRUE);
-
-    // Configure LED1
-    LED (&LEDTRIS, &LEDLAT, 15, ENABLED);
-    LED (&LEDTRIS, &LEDLAT, 15, OFF);
-
-    uint8_t u8count;
-    while (1)
-    {
-        // Toggle LED1 every second
-        LED (&LEDTRIS, &LEDLAT, 15, TOGGLE);
->>>>>>> ee22a8ccb96d8390f8f63d40a435a91ec46a39f5
         delayMs (1000);
     }
     return 0;
