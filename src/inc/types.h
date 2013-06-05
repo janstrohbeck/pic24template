@@ -35,9 +35,9 @@ extern "C" {
 
 #include <stdint.h>
 typedef char c8_t;
-#define TRUE 1
-#define FALSE 0
-typedef uint8_t bool;
+/* #define TRUE 1 */
+/* #define FALSE 0 */
+typedef enum _bool {FALSE=0, TRUE=1} bool;
 
 #ifdef __cplusplus
 }

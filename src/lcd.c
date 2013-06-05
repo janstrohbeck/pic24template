@@ -46,11 +46,10 @@ void lcd_cmd (uint8_t u8cmd)
 
 void lcd_display_char (c8_t c8character)
 {
+    // Hack to add support for linebreak in strings :)
     if (c8character == '\n')
-    {
-        lcd_set_cursor (1,0);
-        return;
-    }
+        // Jump to the second line
+        return lcd_set_cursor (1,0);
 
     RS = 1;               // Beginning of Data mode
     CSB = 0;              // Select display
