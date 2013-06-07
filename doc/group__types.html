@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -76,8 +76,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#files">Files</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">Typedefines</div>  </div>
 </div><!--header-->
@@ -92,65 +92,32 @@ Files</h2></td></tr>
 <tr class="memdesc:types_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines all the types we are going to need in the project. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:gaa8cecfc5c5c054d2875c03e77b7be15d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__types.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:gaa8cecfc5c5c054d2875c03e77b7be15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__types.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:gaa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga93d4fa6fb79d31926edb1d51e2f502d2"><td class="memItemLeft" align="right" valign="top">typedef char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a></td></tr>
 <tr class="separator:ga93d4fa6fb79d31926edb1d51e2f502d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ecf26b576b9a54eca656b9be7ba6a06"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__types.html#ga0ecf26b576b9a54eca656b9be7ba6a06">bool</a></td></tr>
-<tr class="separator:ga0ecf26b576b9a54eca656b9be7ba6a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae84aff2ab941ad3ca48ca2c3bf54e4ed"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__types.html#gad35897bb5db9f645fbb47a071a4fb2f8">_bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__types.html#gae84aff2ab941ad3ca48ca2c3bf54e4ed">bool</a></td></tr>
+<tr class="separator:gae84aff2ab941ad3ca48ca2c3bf54e4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gad35897bb5db9f645fbb47a071a4fb2f8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__types.html#gad35897bb5db9f645fbb47a071a4fb2f8">_bool</a> { <a class="el" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a> =0, 
+<a class="el" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa82764c3079aea4e60c80e45befbb839">TRUE</a> =1
+ }</td></tr>
+<tr class="separator:gad35897bb5db9f645fbb47a071a4fb2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Defines all the types we are going to need in the project. </p>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="gaa93f0eb578d23995850d61f7d61c55c1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FALSE&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="types_8h_source.html#l00039">39</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gaa8cecfc5c5c054d2875c03e77b7be15d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TRUE&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="types_8h_source.html#l00038">38</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
-
-<p>Referenced by <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="ga0ecf26b576b9a54eca656b9be7ba6a06"></a>
+<a class="anchor" id="gae84aff2ab941ad3ca48ca2c3bf54e4ed"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef uint8_t <a class="el" href="group__types.html#ga0ecf26b576b9a54eca656b9be7ba6a06">bool</a></td>
+          <td class="memname">typedef enum <a class="el" href="group__types.html#gad35897bb5db9f645fbb47a071a4fb2f8">_bool</a>  <a class="el" href="group__types.html#gae84aff2ab941ad3ca48ca2c3bf54e4ed">bool</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="types_8h_source.html#l00040">40</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
 
 </div>
 </div>
@@ -168,10 +135,32 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="gad35897bb5db9f645fbb47a071a4fb2f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__types.html#gad35897bb5db9f645fbb47a071a4fb2f8">_bool</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ggad35897bb5db9f645fbb47a071a4fb2f8aa1e095cc966dbecf6a0d8aad75348d1a"></a>FALSE</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggad35897bb5db9f645fbb47a071a4fb2f8aa82764c3079aea4e60c80e45befbb839"></a>TRUE</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="types_8h_source.html#l00040">40</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{<a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>=0, <a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa82764c3079aea4e60c80e45befbb839">TRUE</a>=1} <a class="code" href="group__types.html#gae84aff2ab941ad3ca48ca2c3bf54e4ed">bool</a>;</div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 7 2013 15:21:53 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

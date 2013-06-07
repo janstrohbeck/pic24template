@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,125 +110,216 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html" title="Defines all the types we are going to need in the project. ">types.h</a>&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lcd_8h.html" title="LCD helper functions. ">lcd.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html" title="PIC Utility functions. ">utils.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (uint8_t u8cmd)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 0;               <span class="comment">// Command mode</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 0;              <span class="comment">// Select display</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>;              <span class="comment">// Read Buffer -&gt; Clear RBF bit</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a> = u8cmd;      <span class="comment">// Write command bits</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (uint8_t u8cmd)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 0;               <span class="comment">// Command mode</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 0;              <span class="comment">// Select display</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>;              <span class="comment">// Read Buffer -&gt; Clear RBF bit</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPITBF); <span class="comment">// wait until all bits are sent</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    uint16_t i;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; 150; i++);  <span class="comment">// Create a small delay</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1;                    <span class="comment">// Unselect display</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> c8character)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 1;               <span class="comment">// Beginning of Data mode</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 0;              <span class="comment">// Select display</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>;              <span class="comment">// Read Buffer -&gt; Clear RBF bit</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a> = c8character;      <span class="comment">// Write command bits</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a> = u8cmd;      <span class="comment">// Write command bits</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>;              <span class="comment">// Read Buffer -&gt; Clear RBF bit</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPITBF); <span class="comment">// wait until all bits are sent</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    uint16_t i;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; 150; i++);  <span class="comment">// Create a small delay</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1;                    <span class="comment">// Unselect display</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b">   49</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> c8character)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 1;               <span class="comment">// Beginning of Data mode</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 0;              <span class="comment">// Select display</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>;              <span class="comment">// Read Buffer -&gt; Clear RBF bit</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPITBF); <span class="comment">// wait until all bits are sent</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a> = c8character;      <span class="comment">// Write command bits</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="group__LCD.html#ga743e3d44210124021fa964f2aa0c5fb9">LCD_BUF</a>;              <span class="comment">// Read Buffer -&gt; Clear RBF bit</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    uint16_t i;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; 150; i++); <span class="comment">// Create a small delay</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 0;               <span class="comment">// Quit data mode</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1;              <span class="comment">// Unselect display</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pac8string)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Simply write each character</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">while</span> (*pac8string)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (*pac8string++);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d">   72</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d" title="Configures the LCD display. ">lcd_conf_display</a> (<span class="keywordtype">bool</span> b8display, <span class="keywordtype">bool</span> b8cursor, <span class="keywordtype">bool</span> b8position)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x08 | (b8display &lt;&lt; 2) | (b8cursor &lt;&lt; 1) | b8position);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa">   78</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa" title="Initializes SPI1 to work properly. ">spi_init</a> (<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    RPOR3bits.RP7R = 9; <span class="comment">// RP7 -&gt; SS1</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    RPOR2bits.RP4R = 8; <span class="comment">// RP4 -&gt; SCK1</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    RPOR2bits.RP5R = 7; <span class="comment">// RP5 -&gt; SDO1</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    RPINR20bits.SDI1R = 6; <span class="comment">// RP6 -&gt; SDI1</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPITBF); <span class="comment">// wait until all bits are sent</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    uint16_t i;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; 150; i++); <span class="comment">// Create a small delay</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="group__LCD.html#gaf8903d8eea3868940c60af887473b152">RS</a> = 0;               <span class="comment">// Quit data mode</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1;              <span class="comment">// Unselect display</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pac8string)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Simply write each character</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">while</span> (*pac8string)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">// Hack to add support for linebreak in strings :)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span> (*pac8string == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="comment">// Jump to the second line</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="group__LCD.html#ga8a31367927e9f6033a0a2ca6dc872771" title="Sets the display cursor at a specific position. ">lcd_set_cursor</a> (1,0);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            pac8string++;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">// Otherwise display the character</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (*pac8string++);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    TRISBbits.TRISB4 = 0; <span class="comment">// SCK -&gt; Output</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    TRISBbits.TRISB5 = 0; <span class="comment">// SDO -&gt; Output</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    TRISBbits.TRISB6 = 1; <span class="comment">// SDI -&gt; Input</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    TRISBbits.TRISB7 = 0; <span class="comment">// SS -&gt; Output</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    TRISAbits.TRISA3 = 0; <span class="comment">// RS  -&gt; Output</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    TRISAbits.TRISA4 = 0; <span class="comment">// CSB -&gt; Output</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="group__LCD.html#ga6e6b2dc0bd45980110ff1b0fe75eb902">   85</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga6e6b2dc0bd45980110ff1b0fe75eb902" title="Displays a given number on the LCD in decimal and hexadecimal format. ">lcd_display_number</a> (int16_t i16num)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> ac8buf[17];</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    sprintf (ac8buf, <span class="stringliteral">&quot;%-6d %4x&quot;</span>, i16num, i16num);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (ac8buf);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1; <span class="comment">// Unselect Display</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    IFS0bits.SPI1IF = 0; <span class="comment">// Clear Interrupt Flag</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    IFS0bits.SPI1EIF = 0; <span class="comment">// Disable Interrupts</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.CKP = 1;    <span class="comment">// Idle state for clock is a high level</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.CKE = 0;    <span class="comment">// Data out on Active to Idle Edge</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.MODE16 = 0; <span class="comment">// 8-bit data transfer mode</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.MSTEN = 1;  <span class="comment">// Enable Master mode</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.PPRE = 1;   <span class="comment">// Set Primary Pre-scalar for 16:1 ratio</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.SPRE = 1;   <span class="comment">// Set Secondary Pre-scalar for 7:1 ratio</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.SMP = 0;    <span class="comment">// Sample Input Data at middle of data output time</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.DISSDO = 0; <span class="comment">// Enable SDO output</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.DISSCK = 0; <span class="comment">// Enable SCK output</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.SSEN = 0;   <span class="comment">// Disable SS</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="group__LCD.html#ga13e2fa182018fcb1190e04f55921a77f">LCD_CON2bits</a>.FRMEN = 0;  <span class="comment">// Disable Framed SPI mode</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPIROV = 0; <span class="comment">// Clear Overflow Bit</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPISIDL = 0;<span class="comment">// Continue Operation in Idle mode</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (50);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPIEN = 1;  <span class="comment">// Enable SPI module</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a">  115</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a" title="Clears the LCD display. ">lcd_clear</a> (<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x01); <span class="comment">// Clear Display</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x39); <span class="comment">// Function Set</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x06); <span class="comment">// Cursor auto-increment</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6">  125</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> (<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Display Initialisation Commands</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x39); <span class="comment">// Function Set</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x14); <span class="comment">// Bias Set</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x55); <span class="comment">// Power Control</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (500);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x6D); <span class="comment">// Follower Control</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x78); <span class="comment">// Contrast Set</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x38); <span class="comment">// Instruction Table 0</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x0F); <span class="comment">// Display ON, Curson on, blink</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x01); <span class="comment">// Clear Display</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x06); <span class="comment">// Cursor auto-increment</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89">lcd_display_long_string</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pac8string, uint16_t u16delay)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Used later to remember the passed string.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">static</span> <a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pc8char = NULL;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// Array to hold our single lines</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">static</span> <a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *ac8buf[30];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Line count</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">static</span> uint8_t u8count = 0;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// Array index</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    uint8_t u8index = 0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// If the string hasn&#39;t already been parsed</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (pc8char == NULL || pc8char != pac8string)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        pc8char = pac8string;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">// Split string by using linebreaks as delimiters</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        pc8char = strtok (pac8string, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// While there are still linebreaks in the string</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">while</span> (pc8char != NULL)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="comment">// Store the line in the array</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            ac8buf[u8index++] = pc8char;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="comment">// Get next line in string</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            pc8char = strtok (NULL, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="comment">// Increment Line count</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            u8count++;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="comment">// Remember this string</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        pc8char = pac8string;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    u8index = 0;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// to handle two \n&#39;s in sequence: Insert a newline</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">bool</span> b8skipline = <a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Iterate over the lines</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">while</span> (u8index &lt; u8count)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a" title="Clears the LCD display. ">lcd_clear</a> ();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// If the lines does not have to be clear because of a second newline</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (!b8skipline)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="comment">// Display the line</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (ac8buf[u8index]);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// Go to the second line</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="group__LCD.html#ga8a31367927e9f6033a0a2ca6dc872771" title="Sets the display cursor at a specific position. ">lcd_set_cursor</a> (1, 0);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="comment">// If the previous line didn&#39;t have to be clear</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span> (!b8skipline)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="comment">// Look if the line has a second \n</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">if</span> (*(ac8buf[u8index+1]-1) == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="comment">// Then skip this line and next time, put this line in the second line</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                b8skipline = <a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa82764c3079aea4e60c80e45befbb839">TRUE</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="comment">// Otherwise display the line</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (ac8buf[++u8index]);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="comment">// Otherwise display the line in the second line instead of the first line.</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (ac8buf[++u8index]);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="comment">// Finally done.</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            b8skipline = <a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (u16delay);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d">  157</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d" title="Configures the LCD display. ">lcd_conf_display</a> (<span class="keywordtype">bool</span> b8display, <span class="keywordtype">bool</span> b8cursor, <span class="keywordtype">bool</span> b8position)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x08 | (b8display &lt;&lt; 2) | (b8cursor &lt;&lt; 1) | b8position);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa">  163</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa" title="Initializes SPI1 to work properly. ">spi_init</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;{</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    RPOR3bits.RP7R = 9; <span class="comment">// RP7 -&gt; SS1</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    RPOR2bits.RP4R = 8; <span class="comment">// RP4 -&gt; SCK1</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    RPOR2bits.RP5R = 7; <span class="comment">// RP5 -&gt; SDO1</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    RPINR20bits.SDI1R = 6; <span class="comment">// RP6 -&gt; SDI1</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    TRISBbits.TRISB4 = 0; <span class="comment">// SCK -&gt; Output</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    TRISBbits.TRISB5 = 0; <span class="comment">// SDO -&gt; Output</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    TRISBbits.TRISB6 = 1; <span class="comment">// SDI -&gt; Input</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    TRISBbits.TRISB7 = 0; <span class="comment">// SS -&gt; Output</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    TRISAbits.TRISA3 = 0; <span class="comment">// RS  -&gt; Output</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    TRISAbits.TRISA4 = 0; <span class="comment">// CSB -&gt; Output</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="group__LCD.html#ga944decfc39f9e5bd2ecdfb53de574a3f">CSB</a> = 1; <span class="comment">// Unselect Display</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    IFS0bits.SPI1IF = 0; <span class="comment">// Clear Interrupt Flag</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    IFS0bits.SPI1EIF = 0; <span class="comment">// Disable Interrupts</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.CKP = 1;    <span class="comment">// Idle state for clock is a high level</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.CKE = 0;    <span class="comment">// Data out on idle to active edge</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.MODE16 = 0; <span class="comment">// 8-bit data transfer mode</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.MSTEN = 1;  <span class="comment">// Enable Master mode</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.PPRE = 1;   <span class="comment">// Set Primary Pre-scalar for 16:1 ratio</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.SPRE = 1;   <span class="comment">// Set Secondary Pre-scalar for 7:1 ratio</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.SMP = 0;    <span class="comment">// Sample Input Data at middle of data output time</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.DISSDO = 0; <span class="comment">// Enable SDO output</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.DISSCK = 0; <span class="comment">// Enable SCK output</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="group__LCD.html#gad2e229caee7351c4088f8a9ad30694e8">LCD_CON1bits</a>.SSEN = 0;   <span class="comment">// Disable SS</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="group__LCD.html#ga13e2fa182018fcb1190e04f55921a77f">LCD_CON2bits</a>.FRMEN = 0;  <span class="comment">// Disable Framed SPI mode</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPIROV = 0; <span class="comment">// Clear Overflow Bit</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPISIDL = 0;<span class="comment">// Continue Operation in Idle mode</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (50);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="group__LCD.html#gaec82b98d0b4c388d305955025f31211a">LCD_STATbits</a>.SPIEN = 1;  <span class="comment">// Enable SPI module</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a">  200</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a" title="Clears the LCD display. ">lcd_clear</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x01); <span class="comment">// Clear Display</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x39); <span class="comment">// Function Set</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x06); <span class="comment">// Cursor auto-increment</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;}</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="code" href="group__LCD.html#ga8a31367927e9f6033a0a2ca6dc872771">  210</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga8a31367927e9f6033a0a2ca6dc872771" title="Sets the display cursor at a specific position. ">lcd_set_cursor</a> (uint8_t u8line, uint8_t u8col)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x80 | (u8line &lt;&lt; 6) | u8col);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6">  216</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;{</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">// Display Initialisation Commands</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x39); <span class="comment">// Function Set</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x14); <span class="comment">// Bias Set</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x55); <span class="comment">// Power Control</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (500);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x6D); <span class="comment">// Follower Control</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x78); <span class="comment">// Contrast Set</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x38); <span class="comment">// Instruction Table 0</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x0F); <span class="comment">// Display ON, Curson on, blink</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x01); <span class="comment">// Clear Display</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="group__LCD.html#ga7c0e690548d4adf74e9a1562769ff1d1" title="SPI Function to send a command to the lcd display. ">lcd_cmd</a> (0x06); <span class="comment">// Cursor auto-increment</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (5);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 7 2013 15:21:53 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

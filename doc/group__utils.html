@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,6 +111,8 @@ Macros</h2></td></tr>
 <tr class="separator:ga0f9e956574df5cc9beb7c62922dbc698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf6cca7fb4132cea0c778a89416af5c5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utils.html#gaf6cca7fb4132cea0c778a89416af5c5a">LED1TRIS</a>&#160;&#160;&#160;TRISB</td></tr>
 <tr class="separator:gaf6cca7fb4132cea0c778a89416af5c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70fb43de88d474f4c6e87dff47edf851"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utils.html#ga70fb43de88d474f4c6e87dff47edf851">DELAY_MS</a>&#160;&#160;&#160;5500</td></tr>
+<tr class="separator:ga70fb43de88d474f4c6e87dff47edf851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -133,6 +135,22 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This module contains some helpful functions for working with PIC Microcontrollers, like accessing LEDs and Buttons. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga70fb43de88d474f4c6e87dff47edf851"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DELAY_MS&#160;&#160;&#160;5500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00038">38</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00041">delayMs()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="gabd5c8ab57c190a6522ccdbf0ed7577da"></a>
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +163,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8h_source.html#l00041">41</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00052">LED()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00058">LED()</a>.</p>
 
 </div>
 </div>
@@ -161,7 +179,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8h_source.html#l00042">42</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00052">LED()</a>, and <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00058">LED()</a>, and <a class="el" href="main_8c_source.html#l00037">main()</a>.</p>
 
 </div>
 </div>
@@ -177,7 +195,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8c_source.html#l00032">32</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00080">LED1()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00086">LED1()</a>.</p>
 
 </div>
 </div>
@@ -193,7 +211,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8c_source.html#l00033">33</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00080">LED1()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00086">LED1()</a>.</p>
 
 </div>
 </div>
@@ -209,7 +227,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8h_source.html#l00039">39</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00052">LED()</a>, and <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00058">LED()</a>, and <a class="el" href="main_8c_source.html#l00037">main()</a>.</p>
 
 </div>
 </div>
@@ -225,7 +243,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8h_source.html#l00040">40</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00052">LED()</a>, and <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00058">LED()</a>, and <a class="el" href="main_8c_source.html#l00037">main()</a>.</p>
 
 </div>
 </div>
@@ -241,7 +259,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="utils_8h_source.html#l00043">43</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00052">LED()</a>, and <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00058">LED()</a>.</p>
 
 </div>
 </div>
@@ -279,15 +297,15 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="utils_8c_source.html#l00085">85</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00091">91</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>References <a class="el" href="utils_8c_source.html#l00035">delayMs()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Wait for the Button to reach its final state</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Negate the PORT value (-&gt; Pull-Up) and return it</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> ! (*u16register &amp; (1&lt;&lt;u8port)); </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<p>References <a class="el" href="utils_8c_source.html#l00041">delayMs()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Wait for the Button to reach its final state</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// Negate the PORT value (-&gt; Pull-Up) and return it</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> ! (*u16register &amp; (1&lt;&lt;u8port)); </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -305,12 +323,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="utils_8c_source.html#l00047">47</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00053">53</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>References <a class="el" href="utils_8c_source.html#l00035">delayMs()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<p>References <a class="el" href="utils_8c_source.html#l00041">delayMs()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -328,12 +346,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="utils_8c_source.html#l00042">42</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00048">48</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>References <a class="el" href="utils_8c_source.html#l00035">delayMs()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (u16delay);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<p>References <a class="el" href="utils_8c_source.html#l00041">delayMs()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (u16delay);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -360,14 +378,16 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="utils_8c_source.html#l00035">35</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00041">41</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00085">button_is_pressed()</a>, <a class="el" href="utils_8c_source.html#l00047">delay_10us()</a>, <a class="el" href="utils_8c_source.html#l00042">delay_ms()</a>, <a class="el" href="lcd_8c_source.html#l00115">lcd_clear()</a>, <a class="el" href="lcd_8c_source.html#l00072">lcd_conf_display()</a>, <a class="el" href="lcd_8c_source.html#l00125">lcd_init()</a>, <a class="el" href="main_8c_source.html#l00035">main()</a>, and <a class="el" href="lcd_8c_source.html#l00078">spi_init()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    uint16_t u16i;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span> (; u16delay &gt; 0; u16delay--)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">for</span> (u16i = 0; u16i &lt;= 5500; u16i++);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<p>References <a class="el" href="utils_8c_source.html#l00038">DELAY_MS</a>.</p>
+
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00091">button_is_pressed()</a>, <a class="el" href="utils_8c_source.html#l00053">delay_10us()</a>, <a class="el" href="utils_8c_source.html#l00048">delay_ms()</a>, <a class="el" href="lcd_8c_source.html#l00200">lcd_clear()</a>, <a class="el" href="lcd_8c_source.html#l00157">lcd_conf_display()</a>, <a class="el" href="lcd_8c_source.html#l00092">lcd_display_long_string()</a>, <a class="el" href="lcd_8c_source.html#l00216">lcd_init()</a>, <a class="el" href="lcd_8c_source.html#l00210">lcd_set_cursor()</a>, <a class="el" href="main_8c_source.html#l00037">main()</a>, and <a class="el" href="lcd_8c_source.html#l00163">spi_init()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    uint16_t u16i;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (; u16delay &gt; 0; u16delay--)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">for</span> (u16i = 0; u16i &lt;= <a class="code" href="group__utils.html#ga70fb43de88d474f4c6e87dff47edf851">DELAY_MS</a>; u16i++);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -419,37 +439,37 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="utils_8c_source.html#l00052">52</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00058">58</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
 <p>References <a class="el" href="utils_8h_source.html#l00041">DISABLED</a>, <a class="el" href="utils_8h_source.html#l00042">ENABLED</a>, <a class="el" href="utils_8h_source.html#l00039">OFF</a>, <a class="el" href="utils_8h_source.html#l00040">ON</a>, and <a class="el" href="utils_8h_source.html#l00043">TOGGLE</a>.</p>
 
-<p>Referenced by <a class="el" href="utils_8c_source.html#l00080">LED1()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">switch</span> ( u8action )</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gad76d1750a6cdeebd506bfcd6752554d2">ON</a>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// Create a &quot;1&quot; in LAT -&gt; Logically on</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            *u16ledlat |= (1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">// Create a &quot;0&quot; in LAT -&gt; Logically off</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            *u16ledlat &amp;= ~(1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga9507a94acc0da8956a17fec9532d45ba">TOGGLE</a>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="comment">// Toggle Bit in LAT -&gt; Switch State</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            *u16ledlat ^= (1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="comment">// Create a &quot;0&quot; in TRIS -&gt; Pin is Output -&gt; LED functionallity</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            *u16ledtris &amp;= ~(1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gabd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">// Create a &quot;1&quot; in TRIS -&gt; Pin is Input -&gt; No LED functionallity</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            *u16ledtris |= (1 &lt;&lt; u8led);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<p>Referenced by <a class="el" href="utils_8c_source.html#l00086">LED1()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">switch</span> ( u8action )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gad76d1750a6cdeebd506bfcd6752554d2">ON</a>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">// Create a &quot;1&quot; in LAT -&gt; Logically on</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            *u16ledlat |= (1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="comment">// Create a &quot;0&quot; in LAT -&gt; Logically off</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            *u16ledlat &amp;= ~(1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga9507a94acc0da8956a17fec9532d45ba">TOGGLE</a>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment">// Toggle Bit in LAT -&gt; Switch State</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            *u16ledlat ^= (1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="comment">// Create a &quot;0&quot; in TRIS -&gt; Pin is Output -&gt; LED functionallity</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            *u16ledtris &amp;= ~(1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__utils.html#gabd5c8ab57c190a6522ccdbf0ed7577da">DISABLED</a>:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">// Create a &quot;1&quot; in TRIS -&gt; Pin is Input -&gt; No LED functionallity</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            *u16ledtris |= (1 &lt;&lt; u8led);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -467,21 +487,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="utils_8c_source.html#l00080">80</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+<p>Definition at line <a class="el" href="utils_8c_source.html#l00086">86</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
-<p>References <a class="el" href="utils_8c_source.html#l00052">LED()</a>, <a class="el" href="utils_8c_source.html#l00032">LED1LAT</a>, and <a class="el" href="utils_8c_source.html#l00033">LED1TRIS</a>.</p>
+<p>References <a class="el" href="utils_8c_source.html#l00058">LED()</a>, <a class="el" href="utils_8c_source.html#l00032">LED1LAT</a>, and <a class="el" href="utils_8c_source.html#l00033">LED1TRIS</a>.</p>
 
-<p>Referenced by <a class="el" href="main_8c_source.html#l00035">main()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> (&amp;<a class="code" href="group__utils.html#gaf6cca7fb4132cea0c778a89416af5c5a">LED1TRIS</a>, &amp;<a class="code" href="group__utils.html#ga0f9e956574df5cc9beb7c62922dbc698">LED1LAT</a>, 15, action);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<p>Referenced by <a class="el" href="main_8c_source.html#l00037">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__utils.html#ga4d6cb6c6586561f9c5ac5a3078e9f276" title="LED Configuration Function. ">LED</a> (&amp;<a class="code" href="group__utils.html#gaf6cca7fb4132cea0c778a89416af5c5a">LED1TRIS</a>, &amp;<a class="code" href="group__utils.html#ga0f9e956574df5cc9beb7c62922dbc698">LED1LAT</a>, 15, action);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 7 2013 15:21:53 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

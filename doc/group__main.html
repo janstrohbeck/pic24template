@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -76,7 +76,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#files">Files</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Main Program</div>  </div>
 </div><!--header-->
@@ -95,6 +96,11 @@ Files</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ga840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__main.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="separator:ga840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga8e691d02150c68a9bd8abeba83044822"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__main.html#ga8e691d02150c68a9bd8abeba83044822">ac8string</a> [] = &quot;Hello World!\n\nThis is just\na simple text\nto attract your\nattention&quot;</td></tr>
+<tr class="separator:ga8e691d02150c68a9bd8abeba83044822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This module contains the main function. </p>
@@ -113,63 +119,54 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="main_8c_source.html#l00037">37</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p>References <a class="el" href="main_8c_source.html#l00035">ac8string</a>, <a class="el" href="utils_8c_source.html#l00041">delayMs()</a>, <a class="el" href="utils_8h_source.html#l00042">ENABLED</a>, <a class="el" href="PIC24HJ64GP502init_8c_source.html#l00039">init()</a>, <a class="el" href="lcd_8c_source.html#l00157">lcd_conf_display()</a>, <a class="el" href="lcd_8c_source.html#l00092">lcd_display_long_string()</a>, <a class="el" href="lcd_8c_source.html#l00216">lcd_init()</a>, <a class="el" href="utils_8c_source.html#l00086">LED1()</a>, <a class="el" href="utils_8h_source.html#l00039">OFF</a>, <a class="el" href="utils_8h_source.html#l00040">ON</a>, <a class="el" href="lcd_8c_source.html#l00163">spi_init()</a>, and <a class="el" href="types_8h_source.html#l00040">TRUE</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Initialize hardware (with PLL enabled)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="group__init.html#gaafa302465b0c807f1a922f02b6d4cff0" title="Init function for the PIC24HJ64GP502. ">init</a> (<a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa82764c3079aea4e60c80e45befbb839">TRUE</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Configure LED1</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">LED1</a> (<a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">LED1</a> (<a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa" title="Initializes SPI1 to work properly. ">spi_init</a> ();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> ();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Turn on display, but disable cursor and position marker</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d" title="Configures the LCD display. ">lcd_conf_display</a> (<a class="code" href="group__utils.html#gad76d1750a6cdeebd506bfcd6752554d2">ON</a>, <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>, <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="group__types.html#ggad35897bb5db9f645fbb47a071a4fb2f8aa82764c3079aea4e60c80e45befbb839">TRUE</a>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89">lcd_display_long_string</a> (<a class="code" href="group__main.html#ga8e691d02150c68a9bd8abeba83044822">ac8string</a>, 1500);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1500);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="ga8e691d02150c68a9bd8abeba83044822"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> ac8string[] = &quot;Hello World!\n\nThis is just\na simple text\nto attract your\nattention&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Definition at line <a class="el" href="main_8c_source.html#l00035">35</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
-<p>References <a class="el" href="utils_8c_source.html#l00035">delayMs()</a>, <a class="el" href="utils_8h_source.html#l00042">ENABLED</a>, <a class="el" href="PIC24HJ64GP502init_8c_source.html#l00039">init()</a>, <a class="el" href="lcd_8c_source.html#l00115">lcd_clear()</a>, <a class="el" href="lcd_8c_source.html#l00072">lcd_conf_display()</a>, <a class="el" href="lcd_8c_source.html#l00047">lcd_display_char()</a>, <a class="el" href="lcd_8c_source.html#l00125">lcd_init()</a>, <a class="el" href="utils_8c_source.html#l00080">LED1()</a>, <a class="el" href="utils_8h_source.html#l00039">OFF</a>, <a class="el" href="utils_8h_source.html#l00040">ON</a>, <a class="el" href="lcd_8c_source.html#l00078">spi_init()</a>, <a class="el" href="utils_8h_source.html#l00043">TOGGLE</a>, and <a class="el" href="types_8h_source.html#l00038">TRUE</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Initialize hardware (with PLL enabled)</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="group__init.html#gaafa302465b0c807f1a922f02b6d4cff0" title="Init function for the PIC24HJ64GP502. ">init</a> (<a class="code" href="group__types.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// Configure LED1</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">LED1</a> (<a class="code" href="group__utils.html#ga73c228f87e038e8295ee8ea8eceaa5ac">ENABLED</a>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">LED1</a> (<a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group__LCD.html#gae909944aa85ae98323073c628be541aa" title="Initializes SPI1 to work properly. ">spi_init</a> ();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="group__LCD.html#ga6842775ba83d166f02b8fef8bb63b1e6" title="Function to initialize the display. ">lcd_init</a> ();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// Turn on display, but disable cursor and position marker</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="group__LCD.html#gabf42547aef5fc962c6f874cad155b59d" title="Configures the LCD display. ">lcd_conf_display</a> (<a class="code" href="group__utils.html#gad76d1750a6cdeebd506bfcd6752554d2">ON</a>, <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>, <a class="code" href="group__utils.html#ga29e413f6725b2ba32d165ffaa35b01e5">OFF</a>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t u8test = 0;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">while</span> (1)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// Clear Display first</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a" title="Clears the LCD display. ">lcd_clear</a> ();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        uint8_t u8copy = u8test, u8len = 0, au8nums[5];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        int8_t i8count;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// Write decimal digits of number to array</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">while</span> (u8copy != 0)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            au8nums[u8len++] = u8copy % 10;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            u8copy /= 10;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// Print out decimals</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (i8count = u8len-1; i8count &gt; -1; i8count--)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (48 + au8nums[i8count]);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// Handle 0 seperately</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (u8len == 0)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (48);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (<span class="charliteral">&#39;:&#39;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (<span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// Print out corresponding character</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="group__LCD.html#gaf17e7d5552c2ccb5aa5ba25959db249b" title="SPI Function to display characters on the display. ">lcd_display_char</a> (u8test);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        u8test++;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// Toggle LED1 every second</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="group__utils.html#ga126f363a4da7944e2bbd5eeffa1f3aae">LED1</a> (<a class="code" href="group__utils.html#ga9507a94acc0da8956a17fec9532d45ba">TOGGLE</a>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="group__utils.html#ga15f180836f0719e0677022d25e79dcca" title="Simple Delay Function. ">delayMs</a> (1000);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-</div><!-- fragment -->
+<p>Referenced by <a class="el" href="main_8c_source.html#l00037">main()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 5 2013 23:40:48 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 7 2013 15:21:53 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
