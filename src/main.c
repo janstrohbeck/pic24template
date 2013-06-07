@@ -32,6 +32,8 @@
 #include "utils.h"
 #include "lcd.h"
 
+c8_t ac8string[] = "Hello World!\n\nThis is just\na simple text\nto attract your\nattention";
+
 int main (void)
 {
     // Initialize hardware (with PLL enabled)
@@ -47,40 +49,10 @@ int main (void)
     // Turn on display, but disable cursor and position marker
     lcd_conf_display (ON, OFF, OFF);
 
-    lcd_display_string ("Hello World!\n");
-    lcd_display_string ("(C) JanStrohbeck");
-    delayMs (3000);
-
-    uint8_t u8test = 0;
-    while (1)
+    while (TRUE)
     {
-        // Clear Display first
-        lcd_clear ();
-        uint8_t u8copy = u8test, u8len = 0, au8nums[5];
-        int8_t i8count;
-
-        // Write decimal digits of number to array
-        while (u8copy != 0)
-        {
-            au8nums[u8len++] = u8copy % 10;
-            u8copy /= 10;
-        }
-        // Print out decimals
-        for (i8count = u8len-1; i8count > -1; i8count--)
-            lcd_display_char (48 + au8nums[i8count]);
-        // Handle 0 seperately
-        if (u8len == 0)
-            lcd_display_char (48);
-
-        lcd_display_char (':');
-        lcd_display_char (' ');
-        // Print out corresponding character
-        lcd_display_char (u8test);
-        u8test++;
-
-        // Toggle LED1 every second
-        LED1 (TOGGLE);
-        delayMs (1000);
+        lcd_display_long_string (ac8string, 1500);
+        delayMs (1500);
     }
     return 0;
 }

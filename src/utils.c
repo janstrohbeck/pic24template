@@ -32,11 +32,17 @@
 #define LED1LAT LATB
 #define LED1TRIS TRISB
 
+#ifdef __DEBUG
+#define DELAY_MS 0
+#else
+#define DELAY_MS 5500
+#endif
+
 void delayMs (uint16_t u16delay)
 {
     uint16_t u16i;
     for (; u16delay > 0; u16delay--)
-        for (u16i = 0; u16i <= 5500; u16i++);
+        for (u16i = 0; u16i <= DELAY_MS; u16i++);
 }
 
 void delay_ms (uint16_t u16delay)

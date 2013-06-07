@@ -103,12 +103,21 @@ void lcd_clear (void);
 void lcd_conf_display (bool b8display, bool b8cursor, bool b8position);
 
 /**
+ * Displays a given number on the LCD in decimal and hexadecimal format.
+ *
+ * @param i16num The number
+ */
+void lcd_display_number (int16_t i16num);
+
+/**
  * Sets the display cursor at a specific position.
  *
  * @param u8line The line to set the cursor to
  * @param u8col The column to set the cursor to
  */
 void lcd_set_cursor (uint8_t u8line, uint8_t u8col);
+
+void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay);
 
 /**
  * Initializes SPI1 to work properly.

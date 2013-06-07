@@ -29,6 +29,8 @@
 #include "types.h"
 #include "lcd.h"
 #include "utils.h"
+#include <stdio.h>
+#include <string.h>
 
 void lcd_cmd (uint8_t u8cmd)
 {
@@ -46,11 +48,6 @@ void lcd_cmd (uint8_t u8cmd)
 
 void lcd_display_char (c8_t c8character)
 {
-    // Hack to add support for linebreak in strings :)
-    if (c8character == '\n')
-        // Jump to the second line
-        return lcd_set_cursor (1,0);
-
     RS = 1;               // Beginning of Data mode
     CSB = 0;              // Select display
 
@@ -71,7 +68,90 @@ void lcd_display_string (c8_t *pac8string)
 {
     // Simply write each character
     while (*pac8string)
-        lcd_display_char (*pac8string++);
+    {
+        // Hack to add support for linebreak in strings :)
+        if (*pac8string == '\n')
+        {
+            // Jump to the second line
+            lcd_set_cursor (1,0);
+            pac8string++;
+        }
+        else
+            // Otherwise display the character
+            lcd_display_char (*pac8string++);
+    }
+}
+
+void lcd_display_number (int16_t i16num)
+{
+    c8_t ac8buf[17];
+    sprintf (ac8buf, "%-6d %4x", i16num, i16num);
+    lcd_display_string (ac8buf);
+}
+
+void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay)
+{
+    // Used later to remember the passed string.
+    static c8_t *pc8char = NULL;
+    // Array to hold our single lines
+    static c8_t *ac8buf[30];
+    // Line count
+    static uint8_t u8count = 0;
+    // Array index
+    uint8_t u8index = 0;
+    // If the string hasn't already been parsed
+    if (pc8char == NULL || pc8char != pac8string)
+    {
+        pc8char = pac8string;
+
+        // Split string by using linebreaks as delimiters
+        pc8char = strtok (pac8string, "\n");
+
+        // While there are still linebreaks in the string
+        while (pc8char != NULL)
+        {
+            // Store the line in the array
+            ac8buf[u8index++] = pc8char;
+            // Get next line in string
+            pc8char = strtok (NULL, "\n");
+            // Increment Line count
+            u8count++;
+        }
+        // Remember this string
+        pc8char = pac8string;
+    }
+
+    u8index = 0;
+    // to handle two \n's in sequence: Insert a newline
+    bool b8skipline = FALSE;
+    // Iterate over the lines
+    while (u8index < u8count)
+    {
+        lcd_clear ();
+        // If the lines does not have to be clear because of a second newline
+        if (!b8skipline)
+            // Display the line
+            lcd_display_string (ac8buf[u8index]);
+        // Go to the second line
+        lcd_set_cursor (1, 0);
+        // If the previous line didn't have to be clear
+        if (!b8skipline)
+            // Look if the line has a second \n
+            if (*(ac8buf[u8index+1]-1) == '\n')
+                // Then skip this line and next time, put this line in the second line
+                b8skipline = TRUE;
+            else
+                // Otherwise display the line
+                lcd_display_string (ac8buf[++u8index]);
+        else
+        {
+            // Otherwise display the line in the second line instead of the first line.
+            lcd_display_string (ac8buf[++u8index]);
+            // Finally done.
+            b8skipline = FALSE;
+        }
+        delayMs (u16delay);
+    }
 }
 
 void lcd_conf_display (bool b8display, bool b8cursor, bool b8position)
@@ -100,7 +180,7 @@ void spi_init (void)
     IFS0bits.SPI1EIF = 0; // Disable Interrupts
 
     LCD_CON1bits.CKP = 1;    // Idle state for clock is a high level
-    LCD_CON1bits.CKE = 0;    // Data out on Active to Idle Edge
+    LCD_CON1bits.CKE = 0;    // Data out on idle to active edge
     LCD_CON1bits.MODE16 = 0; // 8-bit data transfer mode
     LCD_CON1bits.MSTEN = 1;  // Enable Master mode
     LCD_CON1bits.PPRE = 1;   // Set Primary Pre-scalar for 16:1 ratio
