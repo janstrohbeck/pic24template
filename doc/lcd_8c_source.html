@@ -170,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (ac8buf);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89">lcd_display_long_string</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pac8string, uint16_t u16delay)</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__LCD.html#gaee628a0a9ebd7aab816227912ad9bd89" title="Displays a longer string by splitting it at linebreaks and displaying the lines seperately. ">lcd_display_long_string</a> (<a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pac8string, uint16_t u16delay)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Used later to remember the passed string.</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">static</span> <a class="code" href="group__types.html#ga93d4fa6fb79d31926edb1d51e2f502d2">c8_t</a> *pc8char = NULL;</div>
@@ -209,7 +209,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">while</span> (u8index &lt; u8count)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="group__LCD.html#gad235a86241458b1e7b8771688bfdaf9a" title="Clears the LCD display. ">lcd_clear</a> ();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// If the lines does not have to be clear because of a second newline</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// If the line does not have to be clear because of a second newline</span></div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (!b8skipline)</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="comment">// Display the line</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="group__LCD.html#ga15a7a65bc51ed9ce1b4e3d285fc3ca99" title="Displays a string on the display. ">lcd_display_string</a> (ac8buf[u8index]);</div>
@@ -319,7 +319,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 7 2013 15:21:53 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 7 2013 15:33:50 for PIC24H Project Template by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

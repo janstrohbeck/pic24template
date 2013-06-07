@@ -45,6 +45,15 @@ extern "C" {
 #define SS LATBbits.LATB7
 
 /**
+ * SPI Function to send a command to the lcd display.
+ * 
+ * Sends a HEX command to the Display over SPI
+ * 
+ * @param u8cmd The Command to be sent (HEX)
+ */
+void lcd_cmd (uint8_t u8cmd);            
+
+/**
  * SPI Function to display characters on the display.
  * 
  * Generally it sends data to the LCD Display. <br />
@@ -65,13 +74,24 @@ void lcd_display_char (c8_t c8character);
 void lcd_display_string (c8_t *pac8string);
 
 /**
- * SPI Function to send a command to the lcd display.
+ * Displays a longer string by splitting it at linebreaks and displaying the lines
+ * seperately.
+ *
+ * The string is scrolling upwards every u16delay milliseconds.<br />
+ * It is also possible to use two linebreaks in sequence in the string to create
+ * an empty line on the display.
  * 
- * Sends a HEX command to the Display over SPI
- * 
- * @param u8cmd The Command to be sent (HEX)
+ * @param pac8string A pointer to the beginning of the string.
+ * @param u16delay The delay to be used between displaying the next two lines in milliseconds.
  */
-void lcd_cmd (uint8_t u8cmd);            
+void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay);
+
+/**
+ * Displays a given number on the LCD in decimal and hexadecimal format.
+ *
+ * @param i16num The number
+ */
+void lcd_display_number (int16_t i16num);
 
 /**
  * Function to initialize the display.
@@ -103,21 +123,12 @@ void lcd_clear (void);
 void lcd_conf_display (bool b8display, bool b8cursor, bool b8position);
 
 /**
- * Displays a given number on the LCD in decimal and hexadecimal format.
- *
- * @param i16num The number
- */
-void lcd_display_number (int16_t i16num);
-
-/**
  * Sets the display cursor at a specific position.
  *
  * @param u8line The line to set the cursor to
  * @param u8col The column to set the cursor to
  */
 void lcd_set_cursor (uint8_t u8line, uint8_t u8col);
-
-void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay);
 
 /**
  * Initializes SPI1 to work properly.

@@ -128,7 +128,7 @@ void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay)
     while (u8index < u8count)
     {
         lcd_clear ();
-        // If the lines does not have to be clear because of a second newline
+        // If the line does not have to be clear because of a second newline
         if (!b8skipline)
             // Display the line
             lcd_display_string (ac8buf[u8index]);
