@@ -123,7 +123,7 @@ void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay)
 
     u8index = 0;
     // to handle two \n's in sequence: Insert a newline
-    bool b8skipline = FALSE;
+    bool b8skipline = false;
     // Iterate over the lines
     while (u8index < u8count)
     {
@@ -139,7 +139,7 @@ void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay)
             // Look if the line has a second \n
             if (*(ac8buf[u8index+1]-1) == '\n')
                 // Then skip this line and next time, put this line in the second line
-                b8skipline = TRUE;
+                b8skipline = true;
             else
                 // Otherwise display the line
                 lcd_display_string (ac8buf[++u8index]);
@@ -148,7 +148,7 @@ void lcd_display_long_string (c8_t *pac8string, uint16_t u16delay)
             // Otherwise display the line in the second line instead of the first line.
             lcd_display_string (ac8buf[++u8index]);
             // Finally done.
-            b8skipline = FALSE;
+            b8skipline = false;
         }
         delayMs (u16delay);
     }
