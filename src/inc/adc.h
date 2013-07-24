@@ -1,13 +1,13 @@
-/** @defgroup types Typedefines
- *  Defines all the types we are going to need in the project.
- *  @{
- */
+/** @defgroup adc AD-Converter
+ * This module contains Functions to setup and use the AD-Converter on the PIC.
+ * @{
+*/
 /**
  * @file
  * @author Jan Strohbeck
  * @version 1.0
- * @date 2013-05-23
- * @brief Defines all the types we are going to need in the project.
+ * @since 2013-07-24
+ * @brief AD-Converter
  */
 /* Copyright (C) 
  * 2013 - Jan Strohbeck
@@ -24,24 +24,39 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- * 
  */
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef ADC_H
+#define ADC_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <stdint.h>
-typedef char c8_t;
-/* #define TRUE 1 */
-/* #define FALSE 0 */
-typedef enum _bool {false=0, true=1} bool;
+#include "types.h"
+
+/// The operating voltage of the PIC
+#define VCC 3.25f
+
+/**
+ * AD-Converter Init function.
+ * 
+ * Initializes the AD-Converter on the PIC.
+ */
+void ADCinit ();
+
+/**
+ * Reads a value from the AD-Converter (12-Bit).
+ * 
+ * Returns the fraction of measured voltage based on VCC in
+ * 12-Bit-Representation (0...4095).
+ * 
+ * @return The result of the AD-Conversion.
+ */
+uint16_t u16ADCread ();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* TYPES_H */
+#endif /* ADC_H */
 /** @} */

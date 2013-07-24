@@ -31,96 +31,56 @@
 #include "PIC24HJ64GP502init.h"
 #include "utils.h"
 #include "lcd.h"
+#include <math.h>
+#include "timer.h"
+#include "adc.h"
+#include "leds.h"
+#include "multimeter.h"
 
-/// A long sample string which can be printed out to the display w/ lcd_display_long_string (...)
-c8_t ac8string[] = "Hello World!\n\nThis is just\na simple text\nto attract your\nattention";
+// Sample string for lcd_display_long_string
+// c8_t ac8string[] = "Hello World!\n\nThis is just\na simple text\nto attract your\nattention";
 
-
-/**
- * The main program.
- *
- * @return Nothing
- */
 int main (void)
 {
     // Initialize hardware (with PLL enabled)
     init (true);
-
-    // Configure LED1
-    LED1 (ENABLED);
-    LED1 (OFF);
-
-    // The number of LEDs we have
-    uint8_t u8leds = 8;
-
-    // The configuration Registers (TRIS) of the LEDs
-    volatile uint16_t *apvu16conf[] =
-    {
-        &TRISB,
-        &TRISB,
-        &TRISB,
-        &TRISB,
-        &TRISB,
-        &TRISA,
-        &TRISA,
-        &TRISB,
-    };
-
-    // The LAT/PORT-Registers of the LEDs
-    volatile uint16_t *apvu16ports[] =
-    {
-        &LATB,
-        &LATB,
-        &LATB,
-        &LATB,
-        &LATB,
-        &LATA,
-        &LATA,
-        &LATB,
-    };
-
-    // The offsets of the leds in their registers
-    uint8_t au8offsets[] =
-    {
-        10,
-        11,
-        12,
-        13,
-        14,
-        0,
-        1,
-        2,
-    };
-
-    uint8_t u8count;
-    // Enable all LEDs and turn them off
-    for (u8count = 0; u8count < u8leds; u8count++)
-    {
-        LED (apvu16conf[u8count], apvu16ports[u8count], au8offsets[u8count], ENABLED);
-        LED (apvu16conf[u8count], apvu16ports[u8count], au8offsets[u8count], OFF);
-    }
-
-    // Initialize Display
+    // Setup Timer1
+    timer_init ();
+    // Setup the AD-Converter
+    ADCinit ();
+    // Setup SPI
     spi_init ();
+    // Initialize the LCD-Display
     lcd_init ();
 
     // Turn on display, but disable cursor and position marker
     lcd_conf_display (ON, OFF, OFF);
 
-    // Display the bits of a Hex number using the LEDs
-    // leds_display_hex (apvu16conf, apvu16ports, au8offsets, u8leds, 0xFA);
-    // while (1);
+    // Configure LED1
+    LED1 (ENABLED);
+    LED1 (OFF);
 
-    u8count = 0;
 
-    // The first time, the first led has to be manually switched on
-    LED (apvu16conf[u8count], apvu16ports[u8count], au8offsets[u8count], ON);
-    delayMs (100);
+    uint8_t u8count;
+    // Configure all LEDs as Outputs + Off
+    for (u8count = 0; u8count < u8leds; u8count++)
+    {
+        LED (apvu16leds_conf[u8count], apvu16leds_ports[u8count], au8leds_offsets[u8count], ENABLED);
+        LED (apvu16leds_conf[u8count], apvu16leds_ports[u8count], au8leds_offsets[u8count], OFF);
+    }
+
+    // The character array which is sent to the display
+    c8_t ac8buf[50];
 
     while (true)
     {
-        // lcd_display_long_string (ac8string, 1500);
-        leds_running_light (apvu16conf, apvu16ports, au8offsets, u8leds, true);
+        // Set cursor to first row, first column
+        lcd_set_cursor (0,0);
+        multimeter (ac8buf, MODE_CAP, false);
+        // Send the character-array to the display
+        lcd_display_string (ac8buf);
+
+        running_light (true);
         delayMs (100);
     }
     return 0;

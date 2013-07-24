@@ -63,6 +63,7 @@ void init (bool PLL)
     PMD2 = 0xFFFF;
     PMD3 = 0xFFFF;
     PMD1bits.SPI1MD = 0; // Enable SPI1
+    PMD1bits.AD1MD = 0;
 
     AD1PCFGL = 0xFFFF; // Set All Pins as Digital IOs
     TRISB = 0; // Set all Pins as Outputs
@@ -70,5 +71,8 @@ void init (bool PLL)
 
     LATA = 0; // Set all Pins default value to zero.
     LATB = 0;
+
+    CNPU1 = 0;
+    CNPU2 = 0;
 }
 /** @} */

@@ -1,13 +1,13 @@
-/** @defgroup types Typedefines
- *  Defines all the types we are going to need in the project.
- *  @{
- */
+/** @defgroup leds LED Functions
+ * This module contains Functions to do cool stuff using some LEDs.
+ * @{
+*/
 /**
  * @file
  * @author Jan Strohbeck
  * @version 1.0
- * @date 2013-05-23
- * @brief Defines all the types we are going to need in the project.
+ * @since 2013-07-24
+ * @brief LED Functions
  */
 /* Copyright (C) 
  * 2013 - Jan Strohbeck
@@ -24,24 +24,40 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- * 
  */
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef LEDS_H
+#define LEDS_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <stdint.h>
-typedef char c8_t;
-/* #define TRUE 1 */
-/* #define FALSE 0 */
-typedef enum _bool {false=0, true=1} bool;
+
+/**
+ * Function to create a running light using the connected LEDs.
+ *
+ * Creates a running light using the connected LEDs (see configuration arrays).
+ * Call this function repeatedly with some delay (e.g. 100ms) in between.
+ *
+ * @param btwo_directions If the light should be "reflected" on the right side or not.
+ */
+void running_light (bool btwo_directions);
+
+/**
+ * Displays a 8-Bit Number using the connected LEDs (bit-wise).
+ *
+ * @param u8num The number to be displayed.
+ */
+void leds_display_hex (uint8_t u8num);
+
+extern uint8_t u8leds;
+extern volatile uint16_t *apvu16leds_conf[];
+extern volatile uint16_t *apvu16leds_ports[];
+extern uint8_t au8leds_offsets[];
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* TYPES_H */
+#endif /* LEDS_H */
 /** @} */

@@ -1,13 +1,12 @@
-/** @defgroup types Typedefines
- *  Defines all the types we are going to need in the project.
+/** @addtogroup timer
  *  @{
  */
 /**
  * @file
  * @author Jan Strohbeck
  * @version 1.0
- * @date 2013-05-23
- * @brief Defines all the types we are going to need in the project.
+ * @since 2013-07-24
+ * @brief Timer Implementation
  */
 /* Copyright (C) 
  * 2013 - Jan Strohbeck
@@ -24,24 +23,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- * 
  */
-#ifndef TYPES_H
-#define TYPES_H
+#include <p24HJ64GP502.h>
+#include "PIC24HJ64GP502init.h"
+#include "types.h"
+#include "timer.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <stdint.h>
-typedef char c8_t;
-/* #define TRUE 1 */
-/* #define FALSE 0 */
-typedef enum _bool {false=0, true=1} bool;
-
-#ifdef __cplusplus
+void timer_init (void)
+{
+    T1CON = 0;
+    PMD1bits.T1MD = 0;
+    T1CONbits.TCKPS = 3;
+    T1CONbits.TCS = 0;
+    T1CONbits.TON = 1;
+    TMR1 = 0;
 }
-#endif
-
-#endif /* TYPES_H */
 /** @} */
