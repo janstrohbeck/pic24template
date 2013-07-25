@@ -88,11 +88,13 @@ void LED1 (uint8_t action)
     return LED (&LED1TRIS, &LED1LAT, 15, action);
 }
 
-uint8_t button_is_pressed ( volatile uint16_t *u16register, uint8_t u8port )
+uint8_t button_is_pressed (volatile uint16_t *u16tris, volatile uint16_t *u16port, uint8_t u8port)
 {
+    // Configure Pin as Input
+    *u16tris |= (1<<u8port);
     // Wait for the Button to reach its final state
-    delayMs (1);
+    delay_10us (10);
     // Negate the PORT value (-> Pull-Up) and return it
-    return ! (*u16register & (1<<u8port)); 
+    return ! (*u16port & (1<<u8port));
 }
 /** @} */

@@ -25,11 +25,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 #include <p24HJ64GP502.h>
-#include "PIC24HJ64GP502init.h"
 #include "types.h"
 #include "timer.h"
 
-void timer_init (void)
+void timer1_init (bool buse_interrupts)
 {
     T1CON = 0;
     PMD1bits.T1MD = 0;
@@ -37,5 +36,32 @@ void timer_init (void)
     T1CONbits.TCS = 0;
     T1CONbits.TON = 1;
     TMR1 = 0;
+    if (buse_interrupts)
+    {
+        IFS0bits.T1IF = 0;
+        IEC0bits.T1IE = 1;
+        IPC0bits.T1IP = 4;
+    }
+    else
+        IEC0bits.T1IE = 0;
+}
+
+void timer2_init (bool buse_interrupts)
+{
+    T2CON = 0;
+    PMD1bits.T2MD = 0;
+    T2CONbits.TCKPS = 0;
+    T2CONbits.TCS = 0;
+    T2CONbits.TON = 1;
+    T2CONbits.T32 = 0;
+    TMR2 = 0;
+    if (buse_interrupts)
+    {
+        IFS0bits.T2IF = 0;
+        IEC0bits.T2IE = 1;
+        IPC1bits.T2IP = 4;
+    }
+    else
+        IEC0bits.T2IE = 0;
 }
 /** @} */

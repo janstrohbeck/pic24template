@@ -27,25 +27,32 @@
  * 
  */
 #include <p24HJ64GP502.h>
-#include "types.h"
+#include <math.h>
 #include "PIC24HJ64GP502init.h"
+#include "types.h"
 #include "utils.h"
 #include "lcd.h"
-#include <math.h>
 #include "timer.h"
-#include "adc.h"
 #include "leds.h"
 #include "multimeter.h"
+#include "adc.h"
+#include "interrupts.h"
 
 // Sample string for lcd_display_long_string
 // c8_t ac8string[] = "Hello World!\n\nThis is just\na simple text\nto attract your\nattention";
+
+uint32_t u32ms_ticker = 0;
 
 int main (void)
 {
     // Initialize hardware (with PLL enabled)
     init (true);
+    // Initialise Interrupts
+    interrupt_init ();
     // Setup Timer1
-    timer_init ();
+    timer1_init (false);
+    // Setup Timer2
+    timer2_init (true);
     // Setup the AD-Converter
     ADCinit ();
     // Setup SPI
@@ -72,16 +79,38 @@ int main (void)
     // The character array which is sent to the display
     c8_t ac8buf[50];
 
+    // The measuring-mode in use
+    uint8_t u8mode = 0;
+    // If the mode-switch-button has been pressed
+    bool bbut_pressed = false;
+
+    // Reference execution point for main loop
+    uint32_t u32reference = 0;
+
     while (true)
     {
-        // Set cursor to first row, first column
-        lcd_set_cursor (0,0);
-        multimeter (ac8buf, MODE_CAP, false);
-        // Send the character-array to the display
-        lcd_display_string (ac8buf);
+        if ((int32_t) (u32reference - u32ms_ticker) < 0)
+        {
+            // Set reference point 100ms into the future
+            u32reference += 100;
 
-        running_light (true);
-        delayMs (100);
+            if (button_is_pressed (&TRISB, &PORTB, 10))
+                bbut_pressed = true;
+            // Switch mode when button is released
+            else if (bbut_pressed)
+            {
+                u8mode++;
+                u8mode %= 3;
+                bbut_pressed = false;
+            }
+            // Set cursor to first row, first column
+            lcd_set_cursor (0,0);
+            multimeter (ac8buf, u8mode, false);
+            // Send the character-array to the display
+            lcd_display_string (ac8buf);
+
+            running_light (true);
+        }
     }
     return 0;
 }

@@ -40,7 +40,14 @@ extern "C" {
  * 
  * Sets up Timer1 to increment in 1:256 of FCY.
  */
-void timer_init (void);
+void timer1_init (bool buse_interrupts);
+
+/**
+ * Timer2 Initialization Method.
+ *
+ * Sets up Timer2 to increment in FCY.
+ */
+void timer2_init (bool buse_interrupts);
 
 #ifdef __cplusplus
 }

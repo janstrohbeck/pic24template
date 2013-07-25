@@ -67,21 +67,25 @@ void multimeter (c8_t *pac8buf, uint8_t u8mode, bool buse_lights)
     float fcurrent = (float)u16res/4095*VCC;
     // Minimum Voltage that has been measured
     static float fmin = 0.0f;
-    fmin = fcurrent;
     // Maximum Voltage that has been measured
     static float fmax = 0.0f;
-    fmax = fcurrent;
-    // The state of the reset-button
-    bool b8buttonstate = false;
-    // A counter to measure the time the reset-button has been pressed
-    static uint8_t u8butcnt = 0;
+    // Indicates if the function is being run for the first time
+    static bool bfirstrun = true;
 
     uint8_t u8c;
     // The index of the Resistor which is in use
-    static uint8_t u8choice = 2;
+    static uint8_t u8choice;
+    // If the reset-button has been pressed
+    static bool bbut_pressed = false;
 
-    // Configure the button
-    TRISB |= (1<<10);
+    // Initialization
+    if (bfirstrun)
+    {
+        fmin = fcurrent;
+        fmax = fcurrent;
+        u8choice = RiNum-1;
+        bfirstrun = false;
+    }
 
     switch (u8mode)
     {
@@ -99,16 +103,15 @@ void multimeter (c8_t *pac8buf, uint8_t u8mode, bool buse_lights)
                 fmax = fcurrent;
             else if (fmin > fcurrent)
                 fmin = fcurrent;
-            // Get Button state (not working yet)
-            //b8buttonstate = ! (PORTB & (1<<10));
-            if (b8buttonstate)
-                u8butcnt++;
-            // Make sure button was pressed long enough
-            if (b8buttonstate && u8butcnt > 10)
+            // RB10-Pin works as reset-button (with Pull-Up)
+            if (button_is_pressed (&TRISB, &PORTB, 10))
+                bbut_pressed = true;
+            // Switch mode when button is released
+            else if (bbut_pressed)
             {
                 fmax = fcurrent;
                 fmin = fcurrent;
-                u8butcnt = 0;
+                bbut_pressed = false;
             }
             // Display the Voltage using the LEDs
             if (buse_lights)
@@ -164,13 +167,13 @@ void multimeter (c8_t *pac8buf, uint8_t u8mode, bool buse_lights)
             switch (u8choice)
             {
                 case 0:
-                    if (fRx > 20000)
+                    if (fRx > 5000)
                         u8choice = 1;
                     break;
                 case 1:
                     if (fRx < 7000)
                         u8choice = 0;
-                    else if (fRx > 200000)
+                    else if (fRx > 50000)
                         u8choice = 2;
                     break;
                 case 2:
@@ -190,53 +193,52 @@ void multimeter (c8_t *pac8buf, uint8_t u8mode, bool buse_lights)
             // Configure the Resistor pin of choice to be an output
             *(RiPins[u8choice]) &= ~(1<<RiOffsets[u8choice]);
             *(RiPorts[u8choice]) &= ~(1<<RiOffsets[u8choice]); // 0 Volt
+            // Stop Time from now on
+            TMR1 = 0;
             // Wait for the Capacity to be (almost) fully discharged
-            while (u16res > 15)
+            while (u16res > 15 && TMR1 < 60000)
                 u16res = u16ADCread ();
             // Stop Time from now on
             TMR1 = 0;
             // 3.3 Volt to Capacity
             *(RiPorts[u8choice]) |= (1<<RiOffsets[u8choice]);
             // Wait for the Capacity to be 66,6% charged
-            while (u16res < 2482)
+            while (u16res < 2482 && TMR1 < 60000)
                 u16res = u16ADCread ();
-            // Was there a capacity to be measured?
-            if (TMR1 > 10)
-            {
-                // Calculate the Time in milliseconds
-                float ftime = (float) TMR1 / K_1MS;
-                // Calculate the Capacity in nF
-                float fcap = ftime / (Ri[u8choice] * 0.931558f) * 1000000;
+            // Calculate the Time in milliseconds
+            float ftime = (float) TMR1 / K_1MS;
+            // Calculate the Capacity in nF
+            float fcap = ftime / (Ri[u8choice] * 0.931558f) * 1000000;
 
-                // Display information to the user
-                sprintf (pac8buf, "%4.2f V         %1d\n%5.1f nF   %5u", fcurrent, u8choice, fcap, TMR1);
-                //sprintf (pac8buf, "%4.2f V         %1d\n%5.1f nF", fcurrent, u8choice, fcap);
-
-                // Select a better resistor, if necessary
-                switch (u8choice)
-                {
-                    case 0:
-                        if (fcap > 30)
-                            u8choice = 1;
-                        break;
-                    case 1:
-                        if (fcap < 5)
-                            u8choice = 0;
-                        else if (fcap > 300)
-                            u8choice = 2;
-                        break;
-                    case 2:
-                        if (fcap < 70)
-                            u8choice = 1;
-                        break;
-                    default:
-                        u8choice = 2;
-                        break;
-                }
-            }
-            // No capacity connected
-            else
+            // Display information to the user
+            if (fcap < 7.0f)
+                // No (measurable) Capacity connected
                 sprintf (pac8buf, "----------------\n----------------");
+            else
+                //sprintf (pac8buf, "%4.2f V         %1d\n%5.1f nF   %5u", fcurrent, u8choice, fcap, TMR1);
+                sprintf (pac8buf, "%4.2f V         %1d\n%5.1f nF        ", fcurrent, u8choice, fcap);
+
+            // Select a better resistor, if necessary
+            switch (u8choice)
+            {
+                case 0:
+                    if (fcap > 30)
+                        u8choice = 1;
+                    break;
+                case 1:
+                    if (fcap < 5)
+                        u8choice = 0;
+                    else if (fcap > 300)
+                        u8choice = 2;
+                    break;
+                case 2:
+                    if (fcap < 70)
+                        u8choice = 1;
+                    break;
+                default:
+                    u8choice = 2;
+                    break;
+            }
             break;
         default:
             return;

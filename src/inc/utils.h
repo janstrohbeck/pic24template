@@ -108,10 +108,11 @@ void delay_10us (uint16_t u16delay);
 /**
  * Wrapper fuction for getting the state of a button.
  *
- * @param u16register The corresponding PORT Register
+ * @param u16tris The corresponding TRIS Register (as a pointer)
+ * @param u16port The corresponding PORT Register (as a pointer)
  * @param u8port The bit offset in the Register (Port number)
  */
-uint8_t button_is_pressed (volatile uint16_t *u16register, uint8_t u8port);
+uint8_t button_is_pressed (volatile uint16_t *u16tris, volatile uint16_t *u16port, uint8_t u8port);
 
 #ifdef __cplusplus
 }
